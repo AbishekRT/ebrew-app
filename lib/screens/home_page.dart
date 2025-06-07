@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/bottom_nav.dart'; // 👈 Importing the custom nav bar
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -82,30 +83,9 @@ class HomePage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor:
-            isDarkMode ? const Color(0xFFFFAB91) : const Color(0xFF4E342E),
-        unselectedItemColor: Colors.grey,
-        backgroundColor:
-            isDarkMode ? const Color(0xFF6D4C41) : const Color(0xFFD7CCC8),
-        type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.local_cafe),
-            label: 'Products',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Cart',
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.payment), label: 'Payment'),
-        ],
+      bottomNavigationBar: BottomNav(
         currentIndex: 0,
-        onTap: (index) {
-          // In real app, you can navigate to other pages here
-        },
-      ),
+      ), // 👈 Using the new widget
     );
   }
 
