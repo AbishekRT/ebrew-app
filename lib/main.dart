@@ -1,30 +1,30 @@
-// ignore_for_file: unused_import
-
 import 'package:flutter/material.dart';
-import 'screens/home_screen.dart';
-import 'screens/cart_screen.dart';
-import 'screens/profile_screen.dart';
-import 'screens/login_screen.dart';
+import 'screens/login_page.dart';
 
-void main() => runApp(CoffeeMate());
+void main() {
+  runApp(const MyApp());
+}
 
-class CoffeeMate extends StatelessWidget {
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'CoffeeMate',
+      title: 'eBrew App',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        useMaterial3: true,
         brightness: Brightness.light,
-        colorSchemeSeed: Colors.brown,
+        primarySwatch: Colors.brown,
+        scaffoldBackgroundColor: Colors.white,
       ),
       darkTheme: ThemeData(
         brightness: Brightness.dark,
-        colorSchemeSeed: Colors.brown,
+        scaffoldBackgroundColor: Colors.brown.shade900,
+        textTheme: const TextTheme(bodyMedium: TextStyle(color: Colors.white)),
       ),
       themeMode: ThemeMode.system,
-      debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: const LoginPage(), // Start with Login
     );
   }
 }
