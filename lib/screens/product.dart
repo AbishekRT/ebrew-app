@@ -129,9 +129,9 @@ class ProductPage extends StatelessWidget {
             mainAxisSpacing: 12,
             physics: const NeverScrollableScrollPhysics(),
             children:
-                products.map((product) {
-                  return _buildProductCard(product, context);
-                }).toList(),
+                products
+                    .map((product) => _buildProductCard(product, context))
+                    .toList(),
           ),
         ],
       ),
@@ -140,7 +140,13 @@ class ProductPage extends StatelessWidget {
 
   Widget _buildProductCard(Map<String, String> product, BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        // Redirect only for certain products
+        if (product['name'] == 'Classic Roast' ||
+            product['name'] == 'Dark Espresso') {
+          Navigator.pushNamed(context, '/product-detail');
+        }
+      },
       child: Card(
         color: Theme.of(context).cardColor,
         elevation: 4,
@@ -149,12 +155,8 @@ class ProductPage extends StatelessWidget {
           child: Column(
             children: [
               Expanded(
-                child: Image.asset(
-                  product['image']!,
-                  fit: BoxFit.contain,
-                ), // ✅ Use asset
+                child: Image.asset(product['image']!, fit: BoxFit.contain),
               ),
-
               const SizedBox(height: 8),
               Text(
                 product['name']!,
