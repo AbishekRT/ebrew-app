@@ -36,7 +36,7 @@ class ProductPage extends StatelessWidget {
         title: const Text("eBrew Café"),
         backgroundColor: isDark ? const Color(0xFF6D4C41) : Colors.brown,
       ),
-      bottomNavigationBar: const BottomNav(currentIndex: 0),
+      bottomNavigationBar: const BottomNav(currentIndex: 1),
       body: OrientationBuilder(
         builder: (context, orientation) {
           return LayoutBuilder(
