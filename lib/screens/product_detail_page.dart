@@ -4,10 +4,10 @@ class ProductDetail extends StatefulWidget {
   const ProductDetail({super.key});
 
   @override
-  State<ProductDetail> createState() => _ProductDetailPageState();
+  State<ProductDetail> createState() => _ProductDetail();
 }
 
-class _ProductDetailPageState extends State<ProductDetail> {
+class _ProductDetail extends State<ProductDetail> {
   int quantity = 1;
 
   final Map<String, String> product = {
