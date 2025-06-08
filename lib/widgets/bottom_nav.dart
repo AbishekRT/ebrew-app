@@ -14,11 +14,12 @@ class BottomNav extends StatelessWidget {
       type: BottomNavigationBarType.fixed,
       currentIndex: currentIndex,
 
-      // Updated Colors
       selectedItemColor:
           isDarkMode ? const Color(0xFFFFAB91) : const Color(0xFF4E342E),
       unselectedItemColor:
-          isDarkMode ? Colors.grey[400] : const Color(0xFF6D4C41), // Darker brown for visibility
+          isDarkMode
+              ? Colors.grey[400]
+              : const Color.fromARGB(255, 165, 129, 117),
 
       backgroundColor:
           isDarkMode ? const Color(0xFF6D4C41) : const Color(0xFFD7CCC8),
