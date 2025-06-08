@@ -37,26 +37,25 @@ class _ProductDetail extends State<ProductDetail> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child:
-            isWideScreen
-                ? Row(
+        child: isWideScreen
+            ? Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(child: _buildImage()),
+                  const SizedBox(width: 24),
+                  Expanded(child: _buildDetails()),
+                ],
+              )
+            : SingleChildScrollView(
+                child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(child: _buildImage()),
-                    const SizedBox(width: 24),
-                    Expanded(child: _buildDetails()),
+                    _buildImage(),
+                    const SizedBox(height: 16),
+                    _buildDetails(),
                   ],
-                )
-                : SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _buildImage(),
-                      const SizedBox(height: 16),
-                      _buildDetails(),
-                    ],
-                  ),
                 ),
+              ),
       ),
     );
   }
@@ -155,11 +154,7 @@ class _ProductDetail extends State<ProductDetail> {
         Expanded(
           child: ElevatedButton(
             onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text('Added $quantity item(s) to your cart.'),
-                ),
-              );
+              // Just clickable. No visible change or SnackBar.
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.red[600],
