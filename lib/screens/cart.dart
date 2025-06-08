@@ -119,11 +119,10 @@ class CartItemList extends StatelessWidget {
             padding: const EdgeInsets.all(12),
             child: Row(
               children: [
-                Image.asset(
-                  item['image'], 
+                SizedBox(
                   height: 60,
                   width: 60,
-                  fit: BoxFit.cover,
+                  child: Image.asset(item['image'], fit: BoxFit.cover),
                 ),
                 const SizedBox(width: 12),
                 Expanded(
