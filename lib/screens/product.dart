@@ -36,8 +36,8 @@ class ProductPage extends StatelessWidget {
                   // Hero Banner
                   Stack(
                     children: [
-                      Image.network(
-                        'https://i.imgur.com/nLcJ6kB.png',
+                      Image.asset(
+                        'assets/B1.png',
                         width: double.infinity,
                         height: isWideScreen ? 300 : 200,
                         fit: BoxFit.cover,
