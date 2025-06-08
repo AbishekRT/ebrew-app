@@ -19,7 +19,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final _confirmPasswordController = TextEditingController();
   final _birthdayController = TextEditingController();
 
-  DateTime? _selectedDate; // Added here since _buildBirthdayField uses it
+  DateTime? _selectedDate;
 
   void _register() {
     if (_formKey.currentState!.validate()) {
