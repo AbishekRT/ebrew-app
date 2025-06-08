@@ -14,14 +14,15 @@ class BottomNav extends StatelessWidget {
       type: BottomNavigationBarType.fixed,
       currentIndex: currentIndex,
 
-      // Colors based on dark/light theme
+      // Updated Colors
       selectedItemColor:
           isDarkMode ? const Color(0xFFFFAB91) : const Color(0xFF4E342E),
-      unselectedItemColor: Colors.grey,
+      unselectedItemColor:
+          isDarkMode ? Colors.grey[400] : const Color(0xFF6D4C41), // Darker brown for visibility
+
       backgroundColor:
           isDarkMode ? const Color(0xFF6D4C41) : const Color(0xFFD7CCC8),
 
-      // Handle navigation
       onTap: (index) {
         if (index != currentIndex) {
           switch (index) {
@@ -41,7 +42,6 @@ class BottomNav extends StatelessWidget {
         }
       },
 
-      // Navigation items
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
         BottomNavigationBarItem(
