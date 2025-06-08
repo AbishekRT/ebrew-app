@@ -30,8 +30,8 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       home: const LoginPage(), // Initial screen
       routes: {
-        '/home': (context) => const HomeScreen(),
-        '/products': (context) => const ProductsScreen(),
+        '/home': (context) => const HomePage(),
+        '/products': (context) => const Products(),
         '/cart': (context) => CartScreen(), // Not const because of cartItems
         '/faq': (context) => const FAQScreen(),
       },
