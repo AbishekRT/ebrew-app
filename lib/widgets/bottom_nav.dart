@@ -11,37 +11,37 @@ class BottomNav extends StatelessWidget {
         MediaQuery.of(context).platformBrightness == Brightness.dark;
 
     return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      currentIndex: currentIndex,
+
+      // Colors based on dark/light theme
       selectedItemColor:
           isDarkMode ? const Color(0xFFFFAB91) : const Color(0xFF4E342E),
       unselectedItemColor: Colors.grey,
       backgroundColor:
           isDarkMode ? const Color(0xFF6D4C41) : const Color(0xFFD7CCC8),
-      type: BottomNavigationBarType.fixed,
-      currentIndex: currentIndex,
+
+      // Handle navigation
       onTap: (index) {
-        switch (index) {
-          case 0:
-            if (currentIndex != 0) {
+        if (index != currentIndex) {
+          switch (index) {
+            case 0:
               Navigator.pushReplacementNamed(context, '/home');
-            }
-            break;
-          case 1:
-            if (currentIndex != 1) {
+              break;
+            case 1:
               Navigator.pushReplacementNamed(context, '/products');
-            }
-            break;
-          case 2:
-            if (currentIndex != 2) {
+              break;
+            case 2:
               Navigator.pushReplacementNamed(context, '/cart');
-            }
-            break;
-          case 3:
-            if (currentIndex != 3) {
+              break;
+            case 3:
               Navigator.pushReplacementNamed(context, '/faq');
-            }
-            break;
+              break;
+          }
         }
       },
+
+      // Navigation items
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
         BottomNavigationBarItem(

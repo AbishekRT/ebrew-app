@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../widgets/bottom_nav.dart';
 
-class FAQScreen extends StatelessWidget {
-  const FAQScreen({super.key});
+class FAQPage extends StatelessWidget {
+  const FAQPage({super.key});
 
   @override
   Widget build(BuildContext context) {

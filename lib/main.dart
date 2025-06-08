@@ -31,9 +31,9 @@ class MyApp extends StatelessWidget {
       home: const LoginPage(), // Initial screen
       routes: {
         '/home': (context) => const HomePage(),
-        '/products': (context) => const Products(),
+        '/products': (context) => const ProductPage(),
         '/cart': (context) => CartScreen(), // Not const because of cartItems
-        '/faq': (context) => const FAQScreen(),
+        '/faq': (context) => const FAQPage(),
       },
     );
   }
