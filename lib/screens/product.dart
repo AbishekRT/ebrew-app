@@ -8,23 +8,11 @@ class ProductPage extends StatelessWidget {
     {
       'name': 'Classic Roast',
       'price': '1200',
-      'image': 'lib/assets/1.png', // local asset path
+      'image': 'assets/1.png', // ✅ Correct asset path
     },
-    {
-      'name': 'Dark Espresso',
-      'price': '1400',
-      'image': 'lib/assets/1.png', // local asset path
-    },
-    {
-      'name': 'Vanilla Latte',
-      'price': '1600',
-      'image': 'lib/assets/1.png', // local asset path
-    },
-    {
-      'name': 'Hazelnut Brew',
-      'price': '1550',
-      'image': 'lib/assets/1.png', // local asset path
-    },
+    {'name': 'Dark Espresso', 'price': '1400', 'image': 'assets/1.png'},
+    {'name': 'Vanilla Latte', 'price': '1600', 'image': 'assets/1.png'},
+    {'name': 'Hazelnut Brew', 'price': '1550', 'image': 'assets/1.png'},
   ];
 
   @override
@@ -167,8 +155,12 @@ class ProductPage extends StatelessWidget {
           child: Column(
             children: [
               Expanded(
-                child: Image.network(product['image']!, fit: BoxFit.contain),
+                child: Image.asset(
+                  product['image']!,
+                  fit: BoxFit.contain,
+                ), // ✅ Use asset
               ),
+
               const SizedBox(height: 8),
               Text(
                 product['name']!,
