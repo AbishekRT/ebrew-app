@@ -17,6 +17,8 @@ class _RegisterPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
+  final _birthdayController = TextEditingController();
+  DateTime? _selectedDate;
 
   void _register() {
     if (_formKey.currentState!.validate()) {
@@ -58,6 +60,35 @@ class _RegisterPageState extends State<RegisterPage> {
           return 'Email cannot be empty';
         } else if (!value.contains('@') || !value.contains('.')) {
           return 'Please enter a valid email';
+        }
+        return null;
+      },
+    );
+  }
+
+  TextFormField _buildBirthdayField() {
+    return TextFormField(
+      controller: _birthdayController,
+      readOnly: true,
+      decoration: _inputDecoration('Birthday', Icons.cake),
+      onTap: () async {
+        final DateTime? picked = await showDatePicker(
+          context: context,
+          initialDate: DateTime(2000),
+          firstDate: DateTime(1900),
+          lastDate: DateTime.now(),
+        );
+        if (picked != null) {
+          setState(() {
+            _selectedDate = picked;
+            _birthdayController.text =
+                '${picked.day}/${picked.month}/${picked.year}';
+          });
+        }
+      },
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Birthday cannot be empty';
         }
         return null;
       },
@@ -145,6 +176,8 @@ class _RegisterPageState extends State<RegisterPage> {
                   Text('Fill in the details below', style: subtextStyle),
                   const SizedBox(height: 30),
                   _buildNameField(),
+                  const SizedBox(height: 20),
+                  _buildBirthdayField(), // ✅ Birthday field added here
                   const SizedBox(height: 20),
                   _buildEmailField(),
                   const SizedBox(height: 20),
