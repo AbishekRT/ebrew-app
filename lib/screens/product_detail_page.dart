@@ -13,7 +13,7 @@ class _ProductDetail extends State<ProductDetail> {
   final Map<String, String> product = {
     'name': 'Colombian Dark Roast',
     'price': '1500',
-    'image': 'assets/2.jpg',
+    'image': 'assets/2.png',
     'description': 'A rich, bold coffee with hints of chocolate.',
     'tastingNotes': 'Chocolate, Nutty, Smooth finish.',
     'shipping': 'Free delivery within 3 days. Easy returns.',
