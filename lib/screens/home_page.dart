@@ -76,7 +76,7 @@ class HomePage extends StatelessWidget {
                 Container(
                   height: 250,
                   width: double.infinity,
-                  color: Colors.black.withOpacity(0.4),
+                  color: Colors.black.withAlpha(102),
                   alignment: Alignment.center,
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Column(
