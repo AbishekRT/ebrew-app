@@ -8,14 +8,14 @@ class CartScreen extends StatelessWidget {
       'name': 'Cappuccino',
       'price': 550.0,
       'quantity': 1,
-      'image': 'assets/1.png', // changed to local asset path
+      'image': 'assets/1.png',
     },
     {
       'id': 2,
       'name': 'Latte',
       'price': 600.0,
       'quantity': 2,
-      'image': 'assets/4.png', // changed to local asset path
+      'image': 'assets/4.png',
     },
   ];
 
@@ -48,17 +48,11 @@ class CartScreen extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset(
-                        'assets/1.png', // Use an asset image here as well
-                        height: 100,
-                      ),
+                      Image.asset('assets/1.png', height: 100),
                       const SizedBox(height: 16),
                       const Text(
                         "Your Cart is Empty",
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(height: 8),
                       const Text("Start adding your favorite brews!"),
@@ -74,23 +68,19 @@ class CartScreen extends StatelessWidget {
 
               return Padding(
                 padding: const EdgeInsets.all(12.0),
-                child:
-                    orientation == Orientation.portrait || !isWide
-                        ? Column(
-                          children: [
-                            Expanded(child: CartItemList(cartItems)),
-                            SummaryBox(subtotal: subtotal),
-                          ],
-                        )
-                        : Row(
-                          children: [
-                            Expanded(flex: 2, child: CartItemList(cartItems)),
-                            Expanded(
-                              flex: 1,
-                              child: SummaryBox(subtotal: subtotal),
-                            ),
-                          ],
-                        ),
+                child: orientation == Orientation.portrait || !isWide
+                    ? Column(
+                        children: [
+                          Expanded(child: CartItemList(cartItems)),
+                          SummaryBox(subtotal: subtotal),
+                        ],
+                      )
+                    : Row(
+                        children: [
+                          Expanded(flex: 2, child: CartItemList(cartItems)),
+                          Expanded(flex: 1, child: SummaryBox(subtotal: subtotal)),
+                        ],
+                      ),
               );
             },
           );
@@ -128,45 +118,30 @@ class CartItemList extends StatelessWidget {
                 Expanded(
                   child: Text(
                     item['name'],
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    overflow: TextOverflow.ellipsis, // prevent overflow
+                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
                 const SizedBox(width: 8),
-                Text(
-                  "Rs. ${item['price']}",
-                  style: const TextStyle(fontSize: 16),
-                ),
+                Text("Rs. ${item['price']}", style: const TextStyle(fontSize: 16)),
                 const SizedBox(width: 12),
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     IconButton(
-                      onPressed: () {
-                        // handle decrement
-                      },
+                      onPressed: () {},
                       icon: const Icon(Icons.remove),
                     ),
-                    Text(
-                      "${item['quantity']}",
-                      style: const TextStyle(fontSize: 16),
-                    ),
+                    Text("${item['quantity']}", style: const TextStyle(fontSize: 16)),
                     IconButton(
-                      onPressed: () {
-                        // handle increment
-                      },
+                      onPressed: () {},
                       icon: const Icon(Icons.add),
                     ),
                   ],
                 ),
                 IconButton(
                   icon: const Icon(Icons.delete, color: Colors.red),
-                  onPressed: () {
-                    // handle delete
-                  },
+                  onPressed: () {},
                 ),
               ],
             ),
@@ -185,6 +160,7 @@ class SummaryBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final summaryTitleColor = isDark ? Colors.brown[200] : Colors.brown[800];
 
     return Container(
       padding: const EdgeInsets.all(16),
@@ -201,7 +177,7 @@ class SummaryBox extends StatelessWidget {
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
-              color: Colors.brown[800],
+              color: summaryTitleColor,
             ),
           ),
           const SizedBox(height: 12),
