@@ -8,22 +8,22 @@ class ProductPage extends StatelessWidget {
     {
       'name': 'Classic Roast',
       'price': '1200',
-      'image': 'https://i.imgur.com/JFqjz3K.png',
+      'image': 'lib/assets/1.png', // local asset path
     },
     {
       'name': 'Dark Espresso',
       'price': '1400',
-      'image': 'https://i.imgur.com/MqTxuDA.png',
+      'image': 'lib/assets/1.png', // local asset path
     },
     {
       'name': 'Vanilla Latte',
       'price': '1600',
-      'image': 'https://i.imgur.com/dyvXl7g.png',
+      'image': 'lib/assets/1.png', // local asset path
     },
     {
       'name': 'Hazelnut Brew',
       'price': '1550',
-      'image': 'https://i.imgur.com/JFqjz3K.png',
+      'image': 'lib/assets/1.png', // local asset path
     },
   ];
 

@@ -8,14 +8,14 @@ class CartScreen extends StatelessWidget {
       'name': 'Cappuccino',
       'price': 550.0,
       'quantity': 1,
-      'image': 'assets/1.png', // changed to local asset path
+      'image': 'lib/assets/1.png', // changed to local asset path
     },
     {
       'id': 2,
       'name': 'Latte',
       'price': 600.0,
       'quantity': 2,
-      'image': 'assets/4.png', // changed to local asset path
+      'image': 'lib/assets/4.png', // changed to local asset path
     },
   ];
 
@@ -49,7 +49,7 @@ class CartScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset(
-                        'assets/1.png', // Use an asset image here as well
+                        'lib/assets/1.png', // Use an asset image here as well
                         height: 100,
                       ),
                       const SizedBox(height: 16),
@@ -120,7 +120,7 @@ class CartItemList extends StatelessWidget {
             child: Row(
               children: [
                 Image.asset(
-                  item['image'], // Use Image.asset here instead of Image.network
+                  item['image'], 
                   height: 60,
                   width: 60,
                   fit: BoxFit.cover,
@@ -133,14 +133,17 @@ class CartItemList extends StatelessWidget {
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
+                    overflow: TextOverflow.ellipsis, // prevent overflow
                   ),
                 ),
+                const SizedBox(width: 8),
                 Text(
                   "Rs. ${item['price']}",
                   style: const TextStyle(fontSize: 16),
                 ),
                 const SizedBox(width: 12),
                 Row(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     IconButton(
                       onPressed: () {
