@@ -16,17 +16,23 @@ class _RegisterPageState extends State<RegisterPage> {
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  final _confirmPasswordController = TextEditingController();
   final _birthdayController = TextEditingController();
 
   DateTime? _selectedDate;
+  bool _agreeToTerms = false;
 
   void _register() {
-    if (_formKey.currentState!.validate()) {
+    if (_formKey.currentState!.validate() && _agreeToTerms) {
       print('Selected birthday: $_selectedDate');
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const LoginPage()),
+      );
+    } else if (!_agreeToTerms) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('You must agree to the terms and conditions'),
+        ),
       );
     }
   }
@@ -113,22 +119,6 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  TextFormField _buildConfirmPasswordField() {
-    return TextFormField(
-      controller: _confirmPasswordController,
-      decoration: _inputDecoration('Confirm Password', Icons.lock_outline),
-      obscureText: true,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please confirm your password';
-        } else if (value != _passwordController.text) {
-          return 'Passwords do not match';
-        }
-        return null;
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final isDarkMode =
@@ -179,13 +169,23 @@ class _RegisterPageState extends State<RegisterPage> {
                   const SizedBox(height: 30),
                   _buildNameField(),
                   const SizedBox(height: 20),
-                  _buildBirthdayField(), // ✅ Birthday field added here
+                  _buildBirthdayField(),
                   const SizedBox(height: 20),
                   _buildEmailField(),
                   const SizedBox(height: 20),
                   _buildPasswordField(),
                   const SizedBox(height: 20),
-                  _buildConfirmPasswordField(),
+                  CheckboxListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: const Text("I agree to the terms and conditions"),
+                    value: _agreeToTerms,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        _agreeToTerms = value ?? false;
+                      });
+                    },
+                    controlAffinity: ListTileControlAffinity.leading,
+                  ),
                   const SizedBox(height: 30),
                   SizedBox(
                     width: double.infinity,
