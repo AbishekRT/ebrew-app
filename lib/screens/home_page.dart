@@ -5,26 +5,10 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   final List<Map<String, String>> coffeeProducts = const [
-    {
-      'name': 'Espresso',
-      'image':
-          'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80',
-    },
-    {
-      'name': 'Cappuccino',
-      'image':
-          'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80',
-    },
-    {
-      'name': 'Latte',
-      'image':
-          'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80',
-    },
-    {
-      'name': 'Mocha',
-      'image':
-          'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80',
-    },
+    {'name': 'Espresso', 'image': 'assets/1.png'},
+    {'name': 'Cappuccino', 'image': 'assets/2.png'},
+    {'name': 'Latte', 'image': 'assets/3.png'},
+    {'name': 'Mocha', 'image': 'assets/4.png'},
   ];
 
   @override

@@ -5,11 +5,7 @@ class ProductPage extends StatelessWidget {
   const ProductPage({super.key});
 
   final List<Map<String, String>> sampleProducts = const [
-    {
-      'name': 'Classic Roast',
-      'price': '1200',
-      'image': 'assets/1.png', // ✅ Correct asset path
-    },
+    {'name': 'Classic Roast', 'price': '1200', 'image': 'assets/1.png'},
     {'name': 'Dark Espresso', 'price': '1400', 'image': 'assets/1.png'},
     {'name': 'Vanilla Latte', 'price': '1600', 'image': 'assets/1.png'},
     {'name': 'Hazelnut Brew', 'price': '1550', 'image': 'assets/1.png'},
