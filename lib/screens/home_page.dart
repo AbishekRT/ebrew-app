@@ -29,9 +29,11 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDarkMode = MediaQuery.of(context).platformBrightness == Brightness.dark;
+    final isDarkMode =
+        MediaQuery.of(context).platformBrightness == Brightness.dark;
     final isWide = MediaQuery.of(context).size.width > 600;
-    final isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
+    final isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
 
     final headlineStyle = TextStyle(
       fontSize: 26,
@@ -55,7 +57,8 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('eBrew'),
         centerTitle: true,
-        backgroundColor: isDarkMode ? const Color(0xFF4E342E) : const Color(0xFFD7CCC8),
+        backgroundColor:
+            isDarkMode ? const Color(0xFF4E342E) : const Color(0xFFD7CCC8),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -91,10 +94,7 @@ class HomePage extends StatelessWidget {
                       const SizedBox(height: 8),
                       Text(
                         'Your favorite brews & gadgets in one place.',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.white70,
-                        ),
+                        style: TextStyle(fontSize: 16, color: Colors.white70),
                         textAlign: TextAlign.center,
                       ),
                     ],
@@ -133,28 +133,39 @@ class HomePage extends StatelessWidget {
 
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: isLandscape || isWide
-                  ? GridView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 16,
-                        crossAxisSpacing: 16,
-                        childAspectRatio: 4 / 3,
+              child:
+                  isLandscape || isWide
+                      ? GridView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              mainAxisSpacing: 16,
+                              crossAxisSpacing: 16,
+                              childAspectRatio: 4 / 3,
+                            ),
+                        itemCount: coffeeProducts.length,
+                        itemBuilder:
+                            (context, index) => _buildProductCard(
+                              coffeeProducts[index],
+                              isDarkMode,
+                            ),
+                      )
+                      : Column(
+                        children:
+                            coffeeProducts
+                                .map(
+                                  (product) => Padding(
+                                    padding: const EdgeInsets.only(bottom: 12),
+                                    child: _buildProductCard(
+                                      product,
+                                      isDarkMode,
+                                    ),
+                                  ),
+                                )
+                                .toList(),
                       ),
-                      itemCount: coffeeProducts.length,
-                      itemBuilder: (context, index) =>
-                          _buildProductCard(coffeeProducts[index], isDarkMode),
-                    )
-                  : Column(
-                      children: coffeeProducts
-                          .map((product) => Padding(
-                                padding: const EdgeInsets.only(bottom: 12),
-                                child: _buildProductCard(product, isDarkMode),
-                              ))
-                          .toList(),
-                    ),
             ),
 
             const SizedBox(height: 24),
@@ -174,8 +185,7 @@ class HomePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ClipRRect(
-            borderRadius:
-                const BorderRadius.vertical(top: Radius.circular(12)),
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
             child: Image.network(
               product['image']!,
               height: 120,
@@ -184,8 +194,7 @@ class HomePage extends StatelessWidget {
             ),
           ),
           Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 12.0, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
