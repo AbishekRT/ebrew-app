@@ -6,9 +6,9 @@ class ProductPage extends StatelessWidget {
 
   final List<Map<String, String>> sampleProducts = const [
     {'name': 'Classic Roast', 'price': '1200', 'image': 'assets/1.png'},
-    {'name': 'Dark Espresso', 'price': '1400', 'image': 'assets/1.png'},
-    {'name': 'Vanilla Latte', 'price': '1600', 'image': 'assets/1.png'},
-    {'name': 'Hazelnut Brew', 'price': '1550', 'image': 'assets/1.png'},
+    {'name': 'Dark Espresso', 'price': '1400', 'image': 'assets/6.jpg'},
+    {'name': 'Vanilla Latte', 'price': '1600', 'image': 'assets/3.png'},
+    {'name': 'Hazelnut Brew', 'price': '1550', 'image': 'assets/4.png'},
   ];
 
   @override
