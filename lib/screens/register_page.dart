@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import
+// ignore_for_file: unused_import, avoid_print
 
 import 'package:flutter/material.dart';
 import 'home_page.dart';
@@ -18,10 +18,12 @@ class _RegisterPageState extends State<RegisterPage> {
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
   final _birthdayController = TextEditingController();
-  DateTime? _selectedDate;
+
+  DateTime? _selectedDate; // Added here since _buildBirthdayField uses it
 
   void _register() {
     if (_formKey.currentState!.validate()) {
+      print('Selected birthday: $_selectedDate');
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const LoginPage()),
