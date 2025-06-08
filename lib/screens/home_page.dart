@@ -170,7 +170,7 @@ class HomePage extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
-            child: Image.network(
+            child: Image.asset(
               product['image']!,
               height: 120,
               width: double.infinity,
