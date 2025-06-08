@@ -82,9 +82,17 @@ class CartScreen extends StatelessWidget {
                         : Row(
                           children: [
                             Expanded(flex: 2, child: CartItemList(cartItems)),
+                            const SizedBox(
+                              width: 12,
+                            ), // add spacing between list and summary
                             Expanded(
                               flex: 1,
-                              child: SummaryBox(subtotal: subtotal),
+                              child: SingleChildScrollView(
+                                padding: const EdgeInsets.only(
+                                  bottom: 20,
+                                ), // avoid bottom overflow
+                                child: SummaryBox(subtotal: subtotal),
+                              ),
                             ),
                           ],
                         ),
