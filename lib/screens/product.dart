@@ -140,9 +140,7 @@ class ProductPage extends StatelessWidget {
 
   Widget _buildProductCard(Map<String, String> product, BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        // Navigator.pushNamed(context, '/product_details'); // optional
-      },
+      onTap: () {},
       child: Card(
         color: Theme.of(context).cardColor,
         elevation: 4,
