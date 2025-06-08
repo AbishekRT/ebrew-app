@@ -56,7 +56,7 @@ class ProductPage extends StatelessWidget {
                       ),
                       Positioned.fill(
                         child: Container(
-                          color: Colors.black.withOpacity(0.4),
+                          color: const Color.fromRGBO(0, 0, 0, 0.4),
                           alignment: Alignment.center,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -80,16 +80,31 @@ class ProductPage extends StatelessWidget {
                             ],
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
 
                   const SizedBox(height: 16),
 
                   // Product Categories
-                  _buildProductSection(context, "Featured Collection", orientation, sampleProducts),
-                  _buildProductSection(context, "Best Sellers", orientation, sampleProducts),
-                  _buildProductSection(context, "New Arrivals", orientation, sampleProducts),
+                  _buildProductSection(
+                    context,
+                    "Featured Collection",
+                    orientation,
+                    sampleProducts,
+                  ),
+                  _buildProductSection(
+                    context,
+                    "Best Sellers",
+                    orientation,
+                    sampleProducts,
+                  ),
+                  _buildProductSection(
+                    context,
+                    "New Arrivals",
+                    orientation,
+                    sampleProducts,
+                  ),
                 ],
               );
             },
@@ -99,8 +114,12 @@ class ProductPage extends StatelessWidget {
     );
   }
 
-  Widget _buildProductSection(BuildContext context, String title,
-      Orientation orientation, List<Map<String, String>> products) {
+  Widget _buildProductSection(
+    BuildContext context,
+    String title,
+    Orientation orientation,
+    List<Map<String, String>> products,
+  ) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       child: Column(
@@ -112,7 +131,9 @@ class ProductPage extends StatelessWidget {
               const SizedBox(width: 8),
               Text(
                 title,
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+                style: Theme.of(
+                  context,
+                ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
               ),
             ],
           ),
@@ -123,9 +144,10 @@ class ProductPage extends StatelessWidget {
             crossAxisSpacing: 12,
             mainAxisSpacing: 12,
             physics: const NeverScrollableScrollPhysics(),
-            children: products.map((product) {
-              return _buildProductCard(product, context);
-            }).toList(),
+            children:
+                products.map((product) {
+                  return _buildProductCard(product, context);
+                }).toList(),
           ),
         ],
       ),
@@ -145,17 +167,14 @@ class ProductPage extends StatelessWidget {
           child: Column(
             children: [
               Expanded(
-                child: Image.network(
-                  product['image']!,
-                  fit: BoxFit.contain,
-                ),
+                child: Image.network(product['image']!, fit: BoxFit.contain),
               ),
               const SizedBox(height: 8),
               Text(
                 product['name']!,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                      fontWeight: FontWeight.w600,
-                    ),
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.w600),
               ),
               Text(
                 'Rs. ${product['price']}',

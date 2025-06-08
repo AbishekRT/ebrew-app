@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ebrew/widgets/bottom_nav.dart'; // Import the shared bottom nav
 
 class CartScreen extends StatelessWidget {
   final List<Map<String, dynamic>> cartItems = [
@@ -35,19 +36,7 @@ class CartScreen extends StatelessWidget {
         title: const Text("Your Cart"),
         backgroundColor: isDark ? Colors.brown[900] : Colors.brown,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: isDark ? Colors.grey[900] : Colors.white,
-        selectedItemColor: Colors.brown,
-        unselectedItemColor: Colors.grey,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Cart',
-          ),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Account'),
-        ],
-      ),
+      bottomNavigationBar: const BottomNav(currentIndex: 2),
       body: OrientationBuilder(
         builder: (context, orientation) {
           return LayoutBuilder(
