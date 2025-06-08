@@ -18,7 +18,7 @@ class CartScreen extends StatelessWidget {
     },
   ];
 
-  CartScreen({Key? key}) : super(key: key);
+  CartScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -114,7 +114,7 @@ class CartScreen extends StatelessWidget {
 class CartItemList extends StatelessWidget {
   final List<Map<String, dynamic>> cartItems;
 
-  const CartItemList(this.cartItems, {Key? key}) : super(key: key);
+  const CartItemList(this.cartItems, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -189,7 +189,7 @@ class CartItemList extends StatelessWidget {
 class SummaryBox extends StatelessWidget {
   final double subtotal;
 
-  const SummaryBox({required this.subtotal, Key? key}) : super(key: key);
+  const SummaryBox({required this.subtotal, super.key});
 
   @override
   Widget build(BuildContext context) {
