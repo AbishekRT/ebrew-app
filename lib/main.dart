@@ -1,9 +1,13 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'screens/login_page.dart';
 import 'screens/home_page.dart';
 import 'screens/product.dart';
 import 'screens/cart.dart';
 import 'screens/faq.dart';
+import 'screens/product_detail_page.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -34,6 +38,8 @@ class MyApp extends StatelessWidget {
         '/products': (context) => const ProductPage(),
         '/cart': (context) => CartScreen(), // Not const because of cartItems
         '/faq': (context) => const FAQPage(),
+        '/product-detail': (context) => const ProductPage(), // Add this line
+
       },
     );
   }
