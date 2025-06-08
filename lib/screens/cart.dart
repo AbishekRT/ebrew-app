@@ -8,14 +8,14 @@ class CartScreen extends StatelessWidget {
       'name': 'Cappuccino',
       'price': 550.0,
       'quantity': 1,
-      'image': 'lib/assets/1.png', // changed to local asset path
+      'image': 'assets/1.png', // changed to local asset path
     },
     {
       'id': 2,
       'name': 'Latte',
       'price': 600.0,
       'quantity': 2,
-      'image': 'lib/assets/4.png', // changed to local asset path
+      'image': 'assets/4.png', // changed to local asset path
     },
   ];
 
@@ -49,7 +49,7 @@ class CartScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Image.asset(
-                        'lib/assets/1.png', // Use an asset image here as well
+                        'assets/1.png', // Use an asset image here as well
                         height: 100,
                       ),
                       const SizedBox(height: 16),
