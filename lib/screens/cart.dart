@@ -8,14 +8,14 @@ class CartScreen extends StatelessWidget {
       'name': 'Cappuccino',
       'price': 550.0,
       'quantity': 1,
-      'image': 'https://via.placeholder.com/100',
+      'image': 'assets/1.png', // changed to local asset path
     },
     {
       'id': 2,
       'name': 'Latte',
       'price': 600.0,
       'quantity': 2,
-      'image': 'https://via.placeholder.com/100',
+      'image': 'assets/4.png', // changed to local asset path
     },
   ];
 
@@ -48,8 +48,8 @@ class CartScreen extends StatelessWidget {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.network(
-                        'https://cdn-icons-png.flaticon.com/512/2038/2038854.png',
+                      Image.asset(
+                        'assets/1.png', // Use an asset image here as well
                         height: 100,
                       ),
                       const SizedBox(height: 16),
@@ -119,8 +119,8 @@ class CartItemList extends StatelessWidget {
             padding: const EdgeInsets.all(12),
             child: Row(
               children: [
-                Image.network(
-                  item['image'],
+                Image.asset(
+                  item['image'], // Use Image.asset here instead of Image.network
                   height: 60,
                   width: 60,
                   fit: BoxFit.cover,
