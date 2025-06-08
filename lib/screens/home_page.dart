@@ -51,8 +51,8 @@ class HomePage extends StatelessWidget {
             // Hero Banner
             Stack(
               children: [
-                Image.network(
-                  'https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=1200&q=80',
+                Image.asset(
+                  'assets/B2.png',
                   height: 250,
                   width: double.infinity,
                   fit: BoxFit.cover,
