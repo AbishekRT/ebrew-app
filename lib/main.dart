@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         '/products': (context) => const ProductPage(),
         '/cart': (context) => CartScreen(), // Not const because of cartItems
         '/faq': (context) => const FAQPage(),
-        '/product-detail': (context) => const ProductDetails(), // Add this line
+        '/product-detail': (context) => const ProductDetail(), // Add this line
       },
     );
   }

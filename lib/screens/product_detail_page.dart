@@ -1,45 +1,19 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const ProductDetails());
-}
-
-// Root widget with dark/light mode support
-class ProductDetails extends StatelessWidget {
-  const ProductDetails({super.key});
+class ProductDetail extends StatefulWidget {
+  const ProductDetail({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'eBrew Cafe',
-      theme: ThemeData(
-        colorScheme: ColorScheme.light(primary: const Color(0xFFcc0000)),
-        useMaterial3: true,
-      ),
-      darkTheme: ThemeData(
-        colorScheme: ColorScheme.dark(primary: const Color(0xFFcc0000)),
-        useMaterial3: true,
-      ),
-      themeMode: ThemeMode.system,
-      home: const ProductDetailsPage(),
-    );
-  }
+  State<ProductDetail> createState() => _ProductDetailPageState();
 }
 
-class ProductDetailsPage extends StatefulWidget {
-  const ProductDetailsPage({super.key});
-
-  @override
-  State<ProductDetailsPage> createState() => _ProductDetailsPageState();
-}
-
-class _ProductDetailsPageState extends State<ProductDetailsPage> {
+class _ProductDetailPageState extends State<ProductDetail> {
   int quantity = 1;
 
   final Map<String, String> product = {
     'name': 'Colombian Dark Roast',
     'price': '1500',
-    'image': 'https://via.placeholder.com/200',
+    'image': 'assets/2.jpg',
     'description': 'A rich, bold coffee with hints of chocolate.',
     'tastingNotes': 'Chocolate, Nutty, Smooth finish.',
     'shipping': 'Free delivery within 3 days. Easy returns.',
@@ -54,22 +28,17 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final isWide = MediaQuery.of(context).size.width > 600;
+    final isWideScreen = MediaQuery.of(context).size.width > 600;
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Product Details'), centerTitle: true),
-      bottomNavigationBar: NavigationBar(
-        destinations: const [
-          NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
-          NavigationDestination(icon: Icon(Icons.shopping_cart), label: 'Cart'),
-          NavigationDestination(icon: Icon(Icons.person), label: 'Profile'),
-        ],
-        selectedIndex: 0,
+      appBar: AppBar(
+        title: const Text("Product Details"),
+        backgroundColor: Colors.brown,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child:
-            isWide
+            isWideScreen
                 ? Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -83,7 +52,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       _buildImage(),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 16),
                       _buildDetails(),
                     ],
                   ),
@@ -94,10 +63,10 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
 
   Widget _buildImage() {
     return Center(
-      child: Image.network(
+      child: Image.asset(
         product['image']!,
-        width: 200,
-        height: 200,
+        width: 250,
+        height: 250,
         fit: BoxFit.cover,
       ),
     );
@@ -109,77 +78,37 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
       children: [
         Text(
           product['name']!,
-          style: Theme.of(context).textTheme.headlineSmall,
+          style: Theme.of(
+            context,
+          ).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
         ),
-        const SizedBox(height: 4),
+        const SizedBox(height: 8),
         Text(
-          "Rs. ${product['price']}",
-          style: Theme.of(context).textTheme.titleMedium,
+          'Rs. ${product['price']}',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: Colors.red[600],
+          ),
         ),
         const SizedBox(height: 16),
         Text(
           product['description']!,
-          style: Theme.of(context).textTheme.bodyLarge,
+          style: Theme.of(context).textTheme.bodyMedium,
         ),
-        const Divider(height: 32),
-        _buildInfoSection("Taste Notes", product['tastingNotes']!),
-        _buildInfoSection("Shipping and Returns", product['shipping']!),
-        _buildInfoSection("Roast Date", product['roastDate']!),
         const SizedBox(height: 24),
-        Row(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey),
-                borderRadius: BorderRadius.circular(6),
-              ),
-              child: Row(
-                children: [
-                  IconButton(
-                    onPressed: () => _changeQuantity(-1),
-                    icon: const Icon(Icons.remove),
-                  ),
-                  Text(
-                    '$quantity',
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () => _changeQuantity(1),
-                    icon: const Icon(Icons.add),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: ElevatedButton(
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('Added $quantity item(s) to your cart.'),
-                    ),
-                  );
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFcc0000),
-                  foregroundColor: Colors.white,
-                  padding: const EdgeInsets.symmetric(vertical: 14),
-                ),
-                child: const Text('Buy Now'),
-              ),
-            ),
-          ],
-        ),
+        _buildInfo("Tasting Notes", product['tastingNotes']!),
+        _buildInfo("Shipping & Returns", product['shipping']!),
+        _buildInfo("Roast Date", product['roastDate']!),
+        const SizedBox(height: 24),
+        _buildQuantityAndButton(),
       ],
     );
   }
 
-  Widget _buildInfoSection(String title, String content) {
+  Widget _buildInfo(String title, String content) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.only(bottom: 12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -191,6 +120,56 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
           Text(content, style: const TextStyle(fontSize: 14)),
         ],
       ),
+    );
+  }
+
+  Widget _buildQuantityAndButton() {
+    return Row(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey.shade400),
+            borderRadius: BorderRadius.circular(6),
+          ),
+          child: Row(
+            children: [
+              IconButton(
+                icon: const Icon(Icons.remove),
+                onPressed: () => _changeQuantity(-1),
+              ),
+              Text(
+                '$quantity',
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              IconButton(
+                icon: const Icon(Icons.add),
+                onPressed: () => _changeQuantity(1),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(width: 16),
+        Expanded(
+          child: ElevatedButton(
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Added $quantity item(s) to your cart.'),
+                ),
+              );
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.red[600],
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(vertical: 14),
+            ),
+            child: const Text('Buy Now'),
+          ),
+        ),
+      ],
     );
   }
 }
