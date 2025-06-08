@@ -237,16 +237,20 @@ class SummaryBox extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 16),
-          ElevatedButton(
+          ElevatedButton.icon(
             onPressed: () {
               // Navigate to checkout
             },
+            icon: const Icon(Icons.shopping_cart_checkout),
+            label: const Text("Checkout"),
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.brown,
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+              backgroundColor:
+                  isDark ? const Color(0xFF6D4C41) : const Color(0xFFA1887F),
+              foregroundColor: Colors.white,
+              padding: const EdgeInsets.symmetric(vertical: 14),
+              textStyle: const TextStyle(fontSize: 16),
               minimumSize: const Size(double.infinity, 50),
             ),
-            child: const Text("Checkout", style: TextStyle(fontSize: 16)),
           ),
         ],
       ),
