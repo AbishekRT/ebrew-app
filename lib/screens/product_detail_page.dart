@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProductDetails());
 }
 
 // Root widget with dark/light mode support
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class ProductDetails extends StatelessWidget {
+  const ProductDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
