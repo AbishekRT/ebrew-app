@@ -8,7 +8,7 @@ class HomePage extends StatelessWidget {
     {
       'name': 'Espresso',
       'image':
-          'https://images.unsplash.com/photo-1588001379565-3fdc36dc1837?auto=format&fit=crop&w=600&q=80',
+          'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80',
     },
     {
       'name': 'Cappuccino',
@@ -18,12 +18,12 @@ class HomePage extends StatelessWidget {
     {
       'name': 'Latte',
       'image':
-          'https://images.unsplash.com/photo-1559628233-4e8c7f716bbd?auto=format&fit=crop&w=600&q=80',
+          'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80',
     },
     {
       'name': 'Mocha',
       'image':
-          'https://images.unsplash.com/photo-1618411378064-e94b7b8ceff0?auto=format&fit=crop&w=600&q=80',
+          'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80',
     },
   ];
 

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'screens/login_page.dart';
+import 'screens/home_page.dart';
+import 'screens/product.dart';
+import 'screens/cart.dart';
+import 'screens/faq.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +28,13 @@ class MyApp extends StatelessWidget {
         textTheme: const TextTheme(bodyMedium: TextStyle(color: Colors.white)),
       ),
       themeMode: ThemeMode.system,
-      home: const LoginPage(), // Start with Login
+      home: const LoginPage(), // Initial screen
+      routes: {
+        '/home': (context) => const HomeScreen(),
+        '/products': (context) => const ProductsScreen(),
+        '/cart': (context) => CartScreen(), // Not const because of cartItems
+        '/faq': (context) => const FAQScreen(),
+      },
     );
   }
 }

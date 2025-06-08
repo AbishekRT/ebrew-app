@@ -19,7 +19,28 @@ class BottomNav extends StatelessWidget {
       type: BottomNavigationBarType.fixed,
       currentIndex: currentIndex,
       onTap: (index) {
-        // You can add navigation logic here if needed
+        switch (index) {
+          case 0:
+            if (currentIndex != 0) {
+              Navigator.pushReplacementNamed(context, '/home');
+            }
+            break;
+          case 1:
+            if (currentIndex != 1) {
+              Navigator.pushReplacementNamed(context, '/products');
+            }
+            break;
+          case 2:
+            if (currentIndex != 2) {
+              Navigator.pushReplacementNamed(context, '/cart');
+            }
+            break;
+          case 3:
+            if (currentIndex != 3) {
+              Navigator.pushReplacementNamed(context, '/faq');
+            }
+            break;
+        }
       },
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
@@ -28,7 +49,7 @@ class BottomNav extends StatelessWidget {
           label: 'Products',
         ),
         BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: 'Cart'),
-        BottomNavigationBarItem(icon: Icon(Icons.payment), label: 'Payment'),
+        BottomNavigationBarItem(icon: Icon(Icons.help_outline), label: 'FAQ'),
       ],
     );
   }
